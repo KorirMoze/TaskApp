@@ -32,7 +32,12 @@ namespace MauiApp2.ViewModel
             // add our item
             Text = string.Empty;
         }
-
+        [RelayCommand]
+        void Delete(string s)
+        {
+            if (Items.Contains(s))
+                Items.Remove(s);
+        }
 
     }
 } 
