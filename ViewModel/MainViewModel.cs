@@ -26,6 +26,9 @@ namespace MauiApp2.ViewModel
         [RelayCommand]
         void Add()
         {
+            if (string.IsNullOrWhiteSpace(Text))
+                return;
+            Items.Add(Text);
             // add our item
             Text = string.Empty;
         }
