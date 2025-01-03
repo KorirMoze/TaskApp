@@ -1,39 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace MauiApp2.ViewModel
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public partial class MainViewModel : ObservableObject
     {
-        private string text;
-
-        public string Text
+        public MainViewModel()
         {
-            get => text;
-            set
-            {
-                text = value;
-                OnPropertyChanged(nameof(Text));
-            }
+            Items = new ObservableCollection<string>();
         }
-        public event PropertyChangedEventHandler? PropertyChanged;
+        [ObservableProperty]
+        ObservableCollection<string> items;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+        [ObservableProperty]
+        string text;
+
+        [RelayCommand]
+        void Add()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            // add our item
+            Text = string.Empty;
         }
 
-        protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-            field = value;
-            OnPropertyChanged(propertyName);
-            return true;
-        }
+
     }
-}
+} 
