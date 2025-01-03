@@ -10,7 +10,7 @@
           ColumnSpacing="10">
 
         <Image Grid.ColumnSpan="2" Source="dotnet_bot.png"
-               BackgroundColor="Orange"></Image>
+               BackgroundColor="Transparent"></Image>
 
         <Entry Placeholder="Enter Task"
                Grid.Row="1"></Entry>
@@ -27,6 +27,26 @@
                     <x:String>Oranges</x:String>
                 </x:Array>
             </CollectionView.ItemsSource>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete"
+                                           BackgroundColor="Red">
+
+                                </SwipeItem>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Grid Padding="0,5">
+                        <Frame>
+                            <Label Text="{Binding}"
+                                   FontSize="24"></Label>
+                        </Frame>
+                    </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
         </CollectionView>
 
     </Grid>
