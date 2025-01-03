@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -26,10 +19,18 @@ namespace MauiApp2.ViewModel
         [RelayCommand]
         void Add()
         {
+            if (string.IsNullOrWhiteSpace(Text))
+                return;
+            Items.Add(Text);
             // add our item
             Text = string.Empty;
         }
-
+        [RelayCommand]
+        void Delete(string s)
+        {
+            if (Items.Contains(s))
+                Items.Remove(s);
+        }
 
     }
-} 
+}
