@@ -34,9 +34,9 @@ namespace MauiApp2.ViewModel
         }
 
         [RelayCommand]
-        async Task  Tap(string s)
+        async Task Tap(string s)
         {
-            await Shell.Current.GoToAsync(nameof(DetailPage));
+            await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Text={s}");
         }
 
     }
